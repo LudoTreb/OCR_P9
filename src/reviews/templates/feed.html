@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Review</h1>
+<ul>
+{% for review in object_list %}
+    <li>{{reviews.title|upper}} - {{ reviews.rating }} - {{ reviews.comment }}</li>
+    <br>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}
