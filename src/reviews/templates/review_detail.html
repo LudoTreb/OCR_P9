@@ -7,10 +7,15 @@
 <body>
 <h1>Critique details</h1>
     <ul>
-        <li>Titre : {{ post.title }}</li>
-        <li>Note : {{ post.rating }}</li>
-        <li>Commentaire : {{ post.comment }}</li>
+        <li>Titre : {{ review_form.title }}</li>
+        <li>Note : {{ review_form.rating }}</li>
+        <li>Commentaire : {{ review_form.comment }}</li>
+        <li>Date : {{ review_form.time_created }}</li>
     </ul>
+
+    <button type="button">
+                <a href="{% url 'home' %}">Retour à flux</a>
+    </button>
 
 
 </body>

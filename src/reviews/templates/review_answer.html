@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends block %}
 {% block content %}
-    <h1>Créer une critique</h1>
+    <h1>Répondre à la demande de critique</h1>
         <form action="" method="post">
             {% csrf_token %}
-            {{ ticket_form.as_p }}
+            {{ ticket.as_p }}
             {{ review_form.as_p }}
             <input type="submit" value="Créer">
         </form>
