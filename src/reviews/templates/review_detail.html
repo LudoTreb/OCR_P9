@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Critique details</h1>
-    <ul>
-        <li>Titre : {{ review_form.title }}</li>
-        <li>Note : {{ review_form.rating }}</li>
-        <li>Commentaire : {{ review_form.comment }}</li>
-        <li>Date : {{ review_form.time_created }}</li>
-    </ul>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Votre une critique pour le Livre/Article</h2>
 
-    <button type="button">
-                <a href="{% url 'home' %}">Retour à flux</a>
-    </button>
+<h3>{{ review.ticket.title }}</h3>
+<p>{{ review.ticket.description }}</p>
+{% if not review.ticket.image %}
+    <img src="{{ '/media/cover_book_default.png' }}">
+{% else %}
+    <img src="{{ review.ticket.image.url }}" alt="">
+{% endif %}
 
 
-</body>
-</html>
+<h3>Critique</h3>
+<p>{{ review.headline }} - {{ review.rating }}</p>
+<p>{{ review.body }}</p>
+
+<button type="button">
+    <a href="{% url 'home' %}">Retour à flux</a>
+</button>
+{% endblock %}

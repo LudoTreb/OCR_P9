@@ -1,39 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Flux</h1>
-
     <button type="button">
         <a href="{% url 'ticket-add' %}">Demander une critique</a>
     </button>
     <button type="button">
         <a href="{% url 'review-add' %}">Créer une critique</a>
     </button>
-    <ul>
-    {% for ticket in tickets %}
-        <li>{{ticket.title}}</li>
-        <li>{{ticket.description}} </li>
-        <li>{{ticket.user}}</li>
-        <li>{{ticket.time_created}}</li>
-        <button>
-            <a href="{% url 'home' %}">️Créer une critique</a>
-        </button>
+    <hr>
+    {% for post in posts %}
 
+        {% if post.content_type == 'TICKET' %}
+            <div>{% include 'ticket_snippet.html' %}</div>
+            {% if not post.has_review %}
+                <button>
+                    <a href="{% url 'review-answer' post.id %}">Créer une critique</a>
+                </button>
+            {% endif %}
         <hr>
+        {% elif post.content_type == 'REVIEW' %}
+            {% include 'review_snippet.html' %}
+        {% endif %}
     {% empty %}
-        <li>No ticket yet.</li>
+    <p>No articles yet.</p>
     {% endfor %}
-    </ul>
 
-    <ul>
-    {% for review in reviews %}
-        <li>{{review.headline}}</li>
-        <li>{{review.ticket}} </li>
-        <li>{{review.rating}} </li>
-        <li>{{review.body}}</li>
-        <li>{{review.user}}</li>
-        <li>{{review.time_created}}</li>
-    {% empty %}
-        <li>No articles yet.</li>
-    {% endfor %}
-    </ul>
 {% endblock %}

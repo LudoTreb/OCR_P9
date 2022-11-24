@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Suivre d'autres utilisateurs</h2>
+    <form method="POST">
+        <p>Saisissez le nom d'un utilisateur à suivre :</p>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="S'abonner">
+    </form>
+
+
+<h2>Abonnements</h2>
+    <ul>
+    {% for user in user_follows %}
+        {% if user.user == current_user%}
+        <li>{{ user.followed_user }}
+            <a href="{% url 'unfollow' user.id %}">Désabonner</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% empty %}
+    <p>Vous ne suivez aucun autre utilisateur.</p>
+    {% endfor %}
+
+<h2>Abonnés</h2>
+    <ul>
+    {% for subscriber in subscribers %}
+        <li>{{ subscriber.user }}</li>
+    </ul>
+    {% empty %}
+    <p>Aucun autre utilisateur ne vous suit.</p>
+    {% endfor %}
+
+{% endblock %}

@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Créer une critique</h1>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ ticket_form.as_p }}
+            <hr>
             {{ review_form.as_p }}
             <input type="submit" value="Créer">
         </form>

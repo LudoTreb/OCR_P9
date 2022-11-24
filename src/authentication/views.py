@@ -6,9 +6,11 @@ from django.conf import settings
 # Create your views here.
 from django.views.generic import View
 
-from authentication import forms
+from authentication import forms, models
 from authentication.forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
+
+from authentication.models import User, UserFollows
 
 
 def signup_page(request):
@@ -21,6 +23,45 @@ def signup_page(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, 'signup.html', context={'form': form})
 
+
+def subscriptions(request):
+    current_user = request.user
+    users = User.objects.all()
+    user_follows = models.UserFollows.objects.all()
+    subscribers = current_user.followed_by.all()
+    if request.method == "POST":
+        entry = request.POST["followed_user"]
+
+        if entry == current_user.username:
+            return redirect("subscription")
+
+        for user in user_follows:
+            if (user.followed_user.username == entry) and (
+                    user.user.username == current_user.username
+            ):
+                return redirect("subscription")
+
+        for user in users:
+            if user.username == entry:
+                user_to_follow = User.objects.get(username=entry)
+                models.UserFollows.objects.create(
+                    user=current_user, followed_user=user_to_follow
+                )
+
+                return redirect("subscription")
+
+        return redirect("subscription")
+
+    else:
+        form = forms.SubscriptionsForm()
+
+    context = {
+        "form": form,
+        "current_user": current_user,
+        "subscribers": subscribers,
+        "user_follows": user_follows,
+    }
+    return render(request, "subscription.html", context=context)
 
 # def logout_user(request):
 #     logout(request)

@@ -8,8 +8,8 @@
 <style> a {margin: 0 15px 0 0;} </style>
     <div class="nav-menu">
         <a href="{% url 'home' %}">Flux</a>
-        <a href="">Post</a>
-        <a href="">Abonnements</a>
+        <a href="{% url 'posts' %}">Post</a>
+        <a href="{% url 'subscription' %}">Abonnements</a>
         {% if user.is_authenticated %}
             <a href="{% url 'logout' %}">Se déconnecter</a>
             <p>Vous connecté en tant que : {{user.username}}</p>

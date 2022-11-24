@@ -1,0 +1,16 @@
+{% if post.user.id == user.id %}
+    <div>Vous avez publié un ticket</div>
+    <div>
+        {{ post.time_created|date:"H:i, d F o" }}
+    </div>
+    {% else %}
+    <div>{{ post.user.username }} a publié un ticket</div>
+    <div>{{ post.time_created|date:"H:i, d F o" }}</div>
+    {% endif %}
+<h3>{{ post.title }}</h3>
+<p> {{ post.description }}</p>
+{% if not post.image %}
+    <img src="{{ '/media/cover_book_default.png' }}">
+{% else %}
+    <img src="{{ post.image.url }}" alt="">
+{% endif %}

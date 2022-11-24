@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <h2>Ticket details</h2>
-    <ul>
-        <li>Titre : {{ ticket.title }}</li>
-        <li>Description : {{ ticket.description }}</li>
-    </ul>
-    <button type="button">
-                <a href="{% url 'home' %}">Retour à flux</a>
-    </button>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Votre demande de critique pour le livre / article</h2>
 
-</body>
-</html>
+<h3>{{ ticket.title }}</h3>
+<p>{{ ticket.description }}</p>
+{% if not ticket.image %}
+    <img src="{{ '/media/cover_book_default.png' }}">
+{% else %}
+    <img src="{{ ticket.image.url }}" alt="">
+{% endif %}
+<p>{{ ticket.time_created|date:"H:i, d F o" }}</p>
+
+<button type="button">
+    <a href="{% url 'home' %}">Retour à flux</a>
+</button>
+
+{% endblock %}

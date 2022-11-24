@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Modifier votre ticket</h2>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ update_form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ delete_form }}
+        <button type="submit">Supprimer</button>
+    </form>
+{% endblock %}
