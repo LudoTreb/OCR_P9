@@ -1,0 +1,18 @@
+nav {
+    display: flex;
+    align-items: center;
+    background-color: coral;
+    height: 50px;
+}
+
+.nav-menu {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px 0 15px;
+}
+
+h2 {
+    color: red;
+    text-align: center;
+}
+

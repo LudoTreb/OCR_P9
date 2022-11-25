@@ -36,10 +36,10 @@ def feed(request):
             | models.Review.objects.filter(user_id__in=followers_id)
             | models.Review.objects.filter(user_id__in=ticket_id_answers)
     )
-    reviews = reviews.annotate(content_type=Value('REVIEW'), )
+    reviews = reviews.annotate(content_type=Value('REVIEW'))
 
     tickets = models.Ticket.objects.filter(user=request.user) | models.Ticket.objects.filter(user_id__in=followers_id)
-    tickets = tickets.annotate(content_type=Value('TICKET', ))
+    tickets = tickets.annotate(content_type=Value('TICKET'))
 
     posts = sorted(
         chain(reviews, tickets),
@@ -147,13 +147,8 @@ def posts_page(request):
     return render(request, 'posts.html', context={'posts': posts})
 
 
-def unfollow(request, user_id):
-    to_unfollow = User.objects.filter(username=user_id).first()
-    current_user = User.objects.get(username=request.user)
-    user_follows = UserFollows.objects.filter(user=current_user)
+def unfollow(request, user_follow_id):
 
-    for user in user_follows:
-        if user.followed_user == to_unfollow:
-            user.delete()
+    UserFollows.objects.get(id=user_follow_id).delete()
 
     return redirect('subscription')

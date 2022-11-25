@@ -13,7 +13,7 @@ urlpatterns = [
     path('posts/', posts_page, name='posts'),
     path('review/<int:review_id>/', review_detail, name='review-detail'),
     path('review/<int:review_id>/update', review_update, name='review-update'),
-    path('unfollow/<int:user_id>/', unfollow, name='unfollow')
+    path('unfollow/<int:user_follow_id>/', unfollow, name='unfollow')
 ]
 
 

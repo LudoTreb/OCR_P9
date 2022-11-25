@@ -23,9 +23,9 @@ class FollowUsersForm(forms.ModelForm):
         fields = ['follows']
 
     def __init__(self, *args, **kwargs):
-
         super(FollowUsersForm, self).__init__(*args, **kwargs)
         print(self.fields['follows'].initial)
+
 
 class SubscriptionsForm(forms.ModelForm):
     class Meta:

@@ -1,16 +1,13 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
 from django.conf import settings
-
-# Create your views here.
-from django.views.generic import View
+from django.contrib import messages
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
 
 from authentication import forms, models
-from authentication.forms import LoginForm
-from django.contrib.auth import authenticate, login, logout
-
 from authentication.models import User, UserFollows
+
+
+# Create your views here.
 
 
 def signup_page(request):
@@ -32,28 +29,26 @@ def subscriptions(request):
     if request.method == "POST":
         entry = request.POST["followed_user"]
 
-        if entry == current_user.username:
-            return redirect("subscription")
+        # if entry == current_user.username:
+        #     return redirect("subscription")
 
-        for user in user_follows:
-            if (user.followed_user.username == entry) and (
-                    user.user.username == current_user.username
-            ):
-                return redirect("subscription")
+        if not User.objects.filter(username=entry).exists():
+            # for user in user_follows:
+            #     if (user.followed_user.username == entry) and (
+            #             user.user.username == current_user.username
+            #     ):
+            print('affiche message')
+            messages.error(request, "n'existe pas")
+        try:
+            user = User.objects.get(username=entry)
+            UserFollows.objects.create(
+                user=current_user, followed_user=user
+            )
+        except User.DoesNotExist:
 
-        for user in users:
-            if user.username == entry:
-                user_to_follow = User.objects.get(username=entry)
-                models.UserFollows.objects.create(
-                    user=current_user, followed_user=user_to_follow
-                )
+            pass
 
-                return redirect("subscription")
-
-        return redirect("subscription")
-
-    else:
-        form = forms.SubscriptionsForm()
+    form = forms.SubscriptionsForm()
 
     context = {
         "form": form,
