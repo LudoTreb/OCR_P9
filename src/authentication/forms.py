@@ -16,6 +16,12 @@ class SignupForm(UserCreationForm):
         # Si l'on veut personnalisé les informations que l'on récupérer lors de l'inscription
         # fields = ('username', 'email', 'first_name', 'last_name', 'role')
 
+    def __init__(self, *args, **kwargs):
+        super(SignupForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
 
 class FollowUsersForm(forms.ModelForm):
     class Meta:

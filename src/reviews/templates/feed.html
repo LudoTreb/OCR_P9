@@ -1,31 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="main-container">
-    <h2>Flux</h2>
         <button class="btn-center" type="button">
-            <a href="{% url 'ticket-add' %}">Demander une critique</a>
+            <a class="btn-text" href="{% url 'ticket-add' %}">Demander une critique</a>
         </button>
         <button class="btn-center" type="button">
-            <a href="{% url 'review-add' %}">Créer une critique</a>
+            <a class="btn-text" href="{% url 'review-add' %}">Créer une critique</a>
         </button>
 </div>
-
-    <hr>
+<div class="container">
     {% for post in posts %}
-
         {% if post.content_type == 'TICKET' %}
-            <div>{% include 'ticket_snippet.html' %}</div>
-            {% if not post.has_review %}
-                <button>
-                    <a href="{% url 'review-answer' post.id %}">Créer une critique</a>
-                </button>
+        <ul>
+            <li>
+                <div class="post">
+                    {% include 'ticket_snippet.html' %}
+                    {% if not post.has_review %}
+                        <button>
+                            <a href="{% url 'review-answer' post.id %}">Créer une critique</a>
+                        </button>
+                </div>
             {% endif %}
-        <hr>
-        {% elif post.content_type == 'REVIEW' %}
-            {% include 'review_snippet.html' %}
-        {% endif %}
-    {% empty %}
-    <p>No articles yet.</p>
-    {% endfor %}
+            </li>
+            {% elif post.content_type == 'REVIEW' %}
+            <li>
+                <div class="post">
+                    {% include 'review_snippet.html' %}
+                </div>
+            {% endif %}
+            </li>
 
+        </ul>
+    {% endfor %}
+</div>
 {% endblock %}

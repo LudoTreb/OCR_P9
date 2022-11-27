@@ -1,38 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="main-container-subscription">
+    <div class="subscription-container">
+        <h3 class="subscription-title">Suivre d'autres utilisateurs</h3>
+        {% for message in messages %}
+            <li {% if message.tags %} {% endif %}>{{ message }}</li>
+            {% endfor %}
+            <p>Saisissez le nom d'un utilisateur à suivre :</p>
+                <form class="search-form" method="POST">
+                    {% csrf_token %}
+                    <div class="search-bar">{{ form.as_p }}</div>
+                    <input class="btn-follow" type="submit" value="S'abonner">
+                </form>
 
-<h3>Suivre d'autres utilisateurs</h3>
-{% for message in messages %}
-<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-{% endfor %}
-<form method="POST">
-    <p>Saisissez le nom d'un utilisateur à suivre :</p>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="S'abonner">
-</form>
+        <h3 class="subscription-title">Abonnements</h3>
+                {% for user_follow in user_follows %}
+                {% if user_follow.user == current_user%}
 
+            <ul class="user-follow-section">
+                <li class="user-follow">{{ user_follow.followed_user|capfirst }}
+                    <a class="link-unfollow" href="{% url 'unfollow' user_follow.id %}">Désabonner</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% empty %}
+            <p>Vous ne suivez aucun autre utilisateur.</p>
+            {% endfor %}
 
-<h3>Abonnements</h3>
-<ul>
-    {% for user_follow in user_follows %}
-    {% if user_follow.user == current_user%}
-    <li>{{ user_follow.followed_user|capfirst }}
-        <a href="{% url 'unfollow' user_follow.id %}">Désabonner</a>
-    </li>
-    {% endif %}
-</ul>
-{% empty %}
-<p>Vous ne suivez aucun autre utilisateur.</p>
-{% endfor %}
-
-<h3>Abonnés</h3>
-<ul>
-    {% for subscriber in subscribers %}
-    <li>{{ subscriber.user|capfirst }}</li>
-</ul>
-{% empty %}
-<p>Aucun autre utilisateur ne vous suit.</p>
-{% endfor %}
+        <h3 class="subscription-title">Abonnés</h3>
+                {% for subscriber in subscribers %}
+            <ul >
+                <li class="follower">{{ subscriber.user|capfirst }}</li>
+            </ul>
+            {% empty %}
+            <p>Aucun autre utilisateur ne vous suit.</p>
+            {% endfor %}
+    </div>
+</div>
 
 {% endblock %}

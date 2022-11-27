@@ -5,7 +5,7 @@
     {{ post.time_created|date:"H:i, d F o" }}
 </div>
 {% else %}
-<div>{{ post.user.username }} a publié une critique</div>
+<div>{{ post.user.username|capfirst }} a publié une critique</div>
 <div>{{ post.time_created|date:"H:i, d F o" }}</div>
 {% endif %}
 <h3>{{ post.headline }} - Note: {{post.rating}}</h3>

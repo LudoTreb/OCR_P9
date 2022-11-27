@@ -1,0 +1,329 @@
+html{
+    font-family: arial, helvetica, Verdana, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #FDFAF3;
+
+}
+
+/* navigation bar elements */
+
+
+.flex-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    background-color: #B6DA9A;
+    height: 50px;
+}
+
+.authenticate {
+    margin-right: auto;
+    margin: 0 0 0 10px;
+
+}
+
+.logo {
+    margin: auto;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-left: auto;
+    margin: 0 10px 0 0;
+}
+
+.nav-menu {
+    text-decoration: none;
+}
+
+.authenticate, .logo, .nav-menu {
+    color: #3E582A;
+    font-size: 0.85em;
+}
+
+
+/* feed elements */
+
+.main-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    height: 70px;
+    background-color: #DAF1C8;
+}
+
+.btn-center {
+    margin-top:auto;
+    margin: 0 0 7px 0;
+
+    background-color: #B6DA9A;
+    border: none;
+    padding: 7px 40px;
+    display: inline-block;
+    font-size: 0.9em;
+    border-radius: 8px;
+    border: 1px solid #3E582A;
+    color: #3E582A;
+
+}
+
+.btn-text {
+    text-decoration: none;
+    color: #3E582A;
+}
+
+.container {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.post {
+    padding: 0;
+    margin: 0;
+    width:500px;
+    background-color: #81CACF;
+    border: 1px solid #3E582A;
+
+}
+/* Signup */
+
+.signup h2 {
+    color: #3E582A;
+}
+
+.main-container-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.signup {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 0 0 0 0;
+    width: 500px;
+}
+
+.btn-signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3E582A;
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: #B6DA9A;
+    border: 2px solid #B6DA9A;
+    border-radius: 8px;
+    padding: 5px 16px 5px 16px;
+    height: 35px;
+    width: 100px
+}
+
+.btn-place {
+    display: flex;
+    flex-direction:row;
+    gap: 16px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction:column;
+
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 10px 10px;
+    color: #3E582A;
+}
+
+/* Login */
+
+.login h2 {
+    color: #3E582A;
+}
+
+input[name="username"] {
+
+    height: 20px;
+
+    border-radius: 8px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+}
+
+input[name="password"], [name="password1"], [name="password2"] {
+
+    height: 20px;
+
+    border-radius: 8px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+}
+
+.login {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 125px;
+}
+
+.login-input {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 0 0 0 0;
+    background-color: ;
+
+}
+
+.registration{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.login-form {
+display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+/* Subscription */
+
+.main-container-subscription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.subscription-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.search-form {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+
+    gap: 10px;
+    width: 350px;
+}
+
+
+.user-follow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+    border-radius: 8px;
+    padding: 0 0 0 10px;
+    color:  #3E582A;
+
+    position: relative;
+    right: 20px;
+}
+
+.link-unfollow {
+    display: flex;
+    align-items: center;
+    color: #3E582A;
+    font-size: 0.8em;
+    text-decoration: none;
+    background-color: #B6DA9A;
+    border-radius: 0 4px 4px 0;
+    padding: 5px 5px 5px 10px;
+    height: 20px;
+}
+
+.follower {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    width: 350px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+    border-radius: 8px;
+    padding: 5px 5px 5px 10px;
+    color:  #3E582A;
+
+    position: relative;
+    right: 20px;
+}
+
+input[name="followed_user"] {
+
+    height: 28px;
+    width: 250px;
+    border-radius: 8px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+}
+
+.btn-follow {
+    display: flex;
+    align-items: center;
+    color: #3E582A;
+    font-size: 0.8em;
+    background-color: #B6DA9A;
+    border: 2px solid #B6DA9A;
+    border-radius: 8px;
+    padding: 5px 16px 5px 16px;
+    height: 35px;
+    width: 100px
+}
+
+.subscription-container p {
+    font-size: 0.9em;
+    color: #3E582A;
+
+}
+.subscription-container h3 {
+
+    color: #3E582A;
+}

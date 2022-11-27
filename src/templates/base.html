@@ -4,25 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <title>LITReview</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 <!--<style> .nav-menu {margin: 0 15px 0 0;} </style>-->
-<nav>
-    <div class="navbar">
-        <a class="nav-menu" class="logo" href="{% url 'home' %}">LitReview
-<!--                mettre l'image du logo-->
+
+<nav class="flex-container">
+        <div class="authenticate">
+            {% if user.is_authenticated %}
+                <a class="nav-menu">Bonjour {{ user.username|capfirst }}</a>
+            {% endif %}
+        </div>
+        <div class="logo">
+            <a class="nav-menu"  href="{% url 'home' %}">LitReview
+    <!--                mettre l'image du logo-->
         </a>
-    <a class="nav-menu" href="{% url 'home' %}">Flux</a>
-    <a class="nav-menu" href="{% url 'posts' %}">Post</a>
-    <a class="nav-menu" href="{% url 'subscription' %}">Abonnements</a>
-    {% if user.is_authenticated %}
-        <a class="nav-menu">{{ user.username|capfirst }} est connecté</a>
-        <a class="nav-menu" href="{% url 'logout' %}">Se déconnecter</a>
-    {% else %}
-        <a class="nav-menu" href="{% url 'login' %}">Se connecter</a>
-    {% endif %}
-    </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="menu">
+            <a class="nav-menu" href="{% url 'home' %}">Flux</a>
+            <a class="nav-menu" href="{% url 'posts' %}">Post</a>
+            <a class="nav-menu" href="{% url 'subscription' %}">Abonnements</a>
+            {% if user.is_authenticated %}
+            <a class="nav-menu" href="{% url 'logout' %}">Se déconnecter</a>
+            {% else %}
+            <a class="nav-menu" href="{% url 'login' %}">Se connecter</a>
+            {% endif %}
+        </div>
+        {% endif %}
 </nav>
 {% block content %} {% endblock %}
 </body>

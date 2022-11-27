@@ -1,26 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Connectez-vous</h2>
-        <p>{{ message }}</p>
-        {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-        {% endif %}
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                    <td>{{ form.username }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form.password.label_tag }}</td>
-                    <td>{{ form.password }}</td>
-                </tr>
+<div class="login">
+
+    <div class="registration">
+        <div class="registration-title">
+                <h2>Inscrivez-vous maintenant</h2>
+        </div>
+        <button class="btn-center">
+            <a class="btn-text" href="{% url 'signup' %}">Inscrivez-vous</a>
+        </button>
+    </div>
+
+    <div class="login-input">
+
+        <div class="login-title">
+            <h2>Connectez-vous</h2>
+        </div>
+
+            <form class="login-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ message }}</td>
+                        {% if form.errors %}
+                        <td>Le nom ou le mot de passe est incorrect</td>
+                    {% endif %}
+                    </tr>
                 </table>
 
-            <input type="submit" value="Se connecter">
-            <input type="hidden" name="next" value="{{ next }}">
-            <p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous</a></p>
 
-        </form>
+            <input class="btn-center" type="submit" value="Se connecter">
+            <input type="hidden" name="next" value="{{ next }}">
+
+            </form>
+
+    </div>
+
+<!--    <div class="login-img">-->
+<!--        <img src="/media/book-illust.jpg" alt="">-->
+<!--    </div>-->
+</div>
+
 {% endblock %}
