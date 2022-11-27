@@ -13,8 +13,6 @@ class LoginForm(forms.Form):
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        # Si l'on veut personnalisé les informations que l'on récupérer lors de l'inscription
-        # fields = ('username', 'email', 'first_name', 'last_name', 'role')
 
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)

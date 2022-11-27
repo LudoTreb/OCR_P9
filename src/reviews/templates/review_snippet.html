@@ -1,15 +1,17 @@
 
-{% if post.user.id == user.id %}
-<div>Vous avez publié une critique</div>
-<div>
-    {{ post.time_created|date:"H:i, d F o" }}
+<div class="post">
+    <div class="info-post">
+    {% if post.user.id == user.id %}
+        <div>Vous avez publié une critique</div>
+        <div class="date-post">{{ post.time_created|date:"H:i, d F o" }}</div>
+    {% else %}
+        <div>{{ post.user.username|capfirst }} a publié une critique</div>
+        <div class="date-post">{{ post.time_created|date:"H:i, d F o" }}</div>
+    {% endif %}
+    </div>
+    <div class="content-post">
+        <h3>{{ post.headline }} - Note: {{post.rating}}</h3>
+        <p>{{ post.body }}</p>
+    </div>
+    {% include 'ticket_in_review_snippet.html' %}
 </div>
-{% else %}
-<div>{{ post.user.username|capfirst }} a publié une critique</div>
-<div>{{ post.time_created|date:"H:i, d F o" }}</div>
-{% endif %}
-<h3>{{ post.headline }} - Note: {{post.rating}}</h3>
-<div>
-    <p>{{ post.body }}</p>
-</div>
-{% include 'ticket_in_review_snippet.html' %}

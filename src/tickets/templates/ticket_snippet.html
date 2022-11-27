@@ -1,16 +1,23 @@
-{% if post.user.id == user.id %}
-    <div>Vous avez publié un ticket</div>
-    <div>
-        {{ post.time_created|date:"H:i, d F o" }}
+<div class="post">
+    <div class="info-post">
+        {% if post.user.id == user.id %}
+            <div>Vous avez publié un ticket</div>
+            <div class="date-post">{{ post.time_created|date:"H:i, d F o" }}</div>
+        {% else %}
+            <div>{{ post.user.username|capfirst }} a publié un ticket</div>
+            <div class="date-post">{{ post.time_created|date:"H:i, d F o" }}</div>
+        {% endif %}
     </div>
-    {% else %}
-    <div>{{ post.user.username }} a publié un ticket</div>
-    <div>{{ post.time_created|date:"H:i, d F o" }}</div>
-    {% endif %}
-<h3>{{ post.title }}</h3>
-<p> {{ post.description }}</p>
-{% if not post.image %}
-    <img src="{{ '/media/cover_book_default.png' }}">
-{% else %}
-    <img src="{{ post.image.url }}" alt="">
-{% endif %}
+    <div class="content-post">
+        <h3>{{ post.title }}</h3>
+        <p> {{ post.description }}</p>
+        {% if not post.image %}
+            <img src="{{ '/media/cover_book_default.png' }}">
+        {% else %}
+            <img src="{{ post.image.url }}" alt="">
+        {% endif %}
+        {% if not post.has_review %}
+            <button><a href="{% url 'review-answer' post.id %}">Créer une critique</a></button>
+        {% endif %}
+    </div>
+</div>

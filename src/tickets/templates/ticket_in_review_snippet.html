@@ -1,17 +1,22 @@
-{% if post.ticket.user.id == user.id %}
-  <div>Vous avez publié un ticket</div>
-  <div>{{ post.ticket.time_created }}</div>
+<div class="ticket-in-review">
+    {% if post.ticket.user.id == user.id %}
+        <div>
 
-{% else %}
-  <div>{{ post.ticket.user.username }} a publié un ticket</div>
-  <div>{{ post.ticket.time_created }}</div>
-{% endif %}
+          <div>Vous avez publié un ticket</div>
+          <div>{{ post.ticket.time_created }}</div>
 
-<h3 class="card-title">{{ post.ticket.title }}</h3>
-<p class="card-text">{{ post.ticket.description }}</p>
+        {% else %}
+          <div>{{ post.ticket.user.username }} a publié un ticket</div>
+          <div>{{ post.ticket.time_created }}</div>
+        {% endif %}
 
-{% if not post.image %}
-    <img src="{{ '/media/cover_book_default.png' }}">
-{% else %}
-    <img src="{{ post.ticket.image.url }}" alt="">
-{% endif %}
+        <h3 class="card-title">{{ post.ticket.title }}</h3>
+        <p class="card-text">{{ post.ticket.description }}</p>
+
+        {% if not post.image %}
+            <img src="{{ '/media/cover_book_default.png' }}">
+        {% else %}
+            <img src="{{ post.ticket.image.url }}" alt="">
+        </div>
+    {% endif %}
+</div>
