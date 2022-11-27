@@ -1,3 +1,5 @@
+# TODO: Remove unused dependencies
+# TODO: use isort to auto sort libraries
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
@@ -20,11 +22,13 @@ def signup_page(request):
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, 'signup.html', context={'form': form})
+
+# TODO: Clean unused code
 # def logout_user(request):
 #     logout(request)
 #     return redirect('login')
 
-
+# TODO: Clean unused code
 # def login_page(request):
 #     form = LoginForm()
 #     message = ""
@@ -41,7 +45,7 @@ def signup_page(request):
 #
 #     return render(request, 'login.html', context={'form': form, 'message': message})
 
-
+# TODO: Clean unused code
 # class LoginPageView(View, LoginRequiredMixin):  # LoginRequiredMixin --> limite l'acces aux connectés
 #     form_class = forms.LoginForm
 #     template_name = 'login.html'

@@ -12,4 +12,5 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         # Si l'on veut personnalisé les informations que l'on récupérer lors de l'inscription
+        # TODO: delete if not useful
         # fields = ('username', 'email', 'first_name', 'last_name', 'role')

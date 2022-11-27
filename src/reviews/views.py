@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+# TODO: remove comment if not useful
 # Create your views here.
 from django.views.generic import ListView
 
@@ -8,7 +9,7 @@ from reviews.forms import ReviewForm
 from reviews.models import Review
 from tickets.models import Ticket
 
-
+# TODO: remove if not used in routes
 class ArticleListView(ListView):
     model = Review
     template_name = "feed_2.html"

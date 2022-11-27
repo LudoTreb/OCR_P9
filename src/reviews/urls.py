@@ -1,9 +1,11 @@
+# TODO: remove unused imports + isort
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 
 from reviews.views import feed, ArticleListView, review_add, review_detail
 
 urlpatterns = [
+    # TODO: delete path if unused
     # path("flux/", login_required(ArticleListView.as_view()), name="reviews"),
     path("", feed, name="home"),
     path("review/add/", review_add, name="review-add"),

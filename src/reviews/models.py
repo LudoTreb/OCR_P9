@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# TODO: remove comment if not used
 # Create your models here.
 class Review(models.Model):
     class Rating(models.IntegerChoices):
@@ -13,6 +13,7 @@ class Review(models.Model):
     title = models.CharField(max_length=100)
     rating = models.IntegerField(choices=Rating.choices, default=5)
     comment = models.TextField(default="")
+    # TODO: remove comments if not used
     # user
     # time_created = models.DateTimeField(auto_now_add=True)
 

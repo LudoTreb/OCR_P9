@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+# TODO: delete comment if not needed
 # Create your views here.
 from tickets.forms import TicketForm
 from tickets.models import Ticket
