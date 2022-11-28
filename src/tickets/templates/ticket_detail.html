@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Votre demande de critique pour le livre / article</h2>
-
-<h3>{{ ticket.title }}</h3>
-<p>{{ ticket.description }}</p>
-{% if not ticket.image %}
-    <img src="{{ '/media/cover_book_default.png' }}">
-{% else %}
-    <img src="{{ ticket.image.url }}" alt="">
-{% endif %}
-<p>{{ ticket.time_created|date:"H:i, d F o" }}</p>
-
-<button type="button">
-    <a href="{% url 'home' %}">Retour à flux</a>
-</button>
-
+<div class="new-post">
+    <h2>Votre demande de critique pour le livre / article</h2>
+        <div class="post">
+            <div class="content-post">
+                <p class="date-post">{{ ticket.time_created|date:"H:i, d F o" }}</p>
+                <h3>{{ ticket.title }}</h3>
+                <p>{{ ticket.description }}</p>
+                {% if not ticket.image %}
+                    <img src="{{ '/media/cover_book_default.png' }}">
+                {% else %}
+                    <img src="{{ ticket.image.url }}" alt="">
+                {% endif %}
+            </div>
+        </div>
+    <button type="button" class="btn-center">
+        <a class="btn-text" href="{% url 'home' %}">Retour à flux</a>
+    </button>
+</div>
 {% endblock %}

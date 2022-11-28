@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Modifier votre critique</h2>
+<div class="post-update">
+    <h2>Modifier votre critique</h2>
+            <div class="post">
+                <div class="content-post">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ update_form.as_p }}
+                        {{ delete_form }}
+                        <button class="btn-center" type="submit">Modifier</button>
+                        <button class="btn-center" type="submit">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+    <div class="button">
+        <button type="button" class="btn-left">
+            <a class="btn-text" href="{% url 'home' %}">Retour à flux</a>
+        </button>
+    </div>
+</div>
 
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ update_form.as_p }}
-        <button type="submit">Modifier</button>
-    </form>
-
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ delete_form }}
-        <button type="submit">Supprimer</button>
-    </form>
 {% endblock %}

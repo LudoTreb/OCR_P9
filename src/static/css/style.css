@@ -3,17 +3,25 @@ html{
 }
 
 body {
-
+    display: flex;
+    flex-direction: column;
     margin: auto;
     background-color: #FDFAF3;
-
 }
+
+p, h4, h3, h2 {
+    color: #3E582A;
+}
+
+hr {
+  border-top: 2px dotted #3E582A;
+}
+
 
 /* navigation bar elements */
 
 
 .flex-container {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,8 +30,6 @@ body {
     background-color: #B6DA9A;
     height: 50px;
     width: 100%;
-    
-
 }
 
 .authenticate {
@@ -65,14 +71,11 @@ body {
     height: 70px;
     width: 100%;
     background-color: #DAF1C8;
-    position: fixed;
-
 }
 
 .btn-center {
     margin-top:auto;
     margin: 0 0 7px 0;
-
     background-color: #B6DA9A;
     border: none;
     padding: 7px 40px;
@@ -84,6 +87,22 @@ body {
 
 }
 
+
+.btn-left {
+
+    margin: 7px 0 7px 0;
+    background-color: #B6DA9A;
+    border: none;
+    padding: 7px;
+    display: inline-block;
+    font-size: 0.9em;
+    border-radius: 8px;
+    border: 1px solid #3E582A;
+    color: #3E582A;
+    width: 150px;
+
+}
+
 .btn-text {
     text-decoration: none;
     color: #3E582A;
@@ -91,10 +110,11 @@ body {
 
 .container {
     display:flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    right: 20px;
 
 }
 
@@ -168,13 +188,25 @@ body {
     color: #3E582A;
 }
 
-input[name="username"] {
+input[name="username"], [name='title'], [name='headline'], [name='rating'] {
 
     height: 20px;
     border-radius: 8px;
     background-color: #DAF1C8;
     border: 2px solid #B6DA9A;
 }
+input[type='file'] {
+    color: transparent;
+}
+
+textarea[name="description"], [name="body"] {
+
+    border-radius: 8px;
+    background-color: #DAF1C8;
+    border: 2px solid #B6DA9A;
+}
+
+
 
 input[name="password"], [name="password1"], [name="password2"] {
 
@@ -201,8 +233,6 @@ input[name="password"], [name="password1"], [name="password2"] {
     flex-wrap: wrap;
     gap: 25px;
     margin: 0 0 0 0;
-    background-color: ;
-
 }
 
 .registration{
@@ -239,7 +269,9 @@ input[name="password"], [name="password1"], [name="password2"] {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
+    margin-top: 10px;
+    background-color: #FFFCE9;
+    border: 1px solid #3E582A;
 }
 
 .search-form {
@@ -324,10 +356,7 @@ input[name="followed_user"] {
     color: #3E582A;
 
 }
-.subscription-container h3 {
 
-    color: #3E582A;
-}
 
 /* Review & ticket */
 
@@ -349,27 +378,89 @@ li {
     justify-content: space-between;
     background-color: #D2F0F3;
     padding: 16px;
+    color: #3E582A;
+}
+
+.info-post-answer {
+    display: flex;
+    flex-direction:row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 16px;
+    color: #3E582A;
 }
 
 .content-post {
     display: flex;
     flex-direction:column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #FFFCE9;
-    padding: 16px;
+    padding: 0 16px 16px 16px;
+    gap:10px;
 }
 
 .date-post {
     font-size: 0.75em;
+    padding: 5px 0 0 0;
 }
 
 .ticket-in-review {
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     align-items: baseline;
     justify-content: space-between;
     padding: 16px;
     background-color: #DAF1C8;
 }
 
+.info-ticket-in-review {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: px;
+
+}
+
+.content-ticket {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 0 10px 0;
+
+}
+
+.btn-create-review {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.8em;
+    background-color: #B6DA9A;
+    border: 1px solid #3E582A;
+    border-radius: 8px;
+    padding: 5px 16px 5px 16px;
+    height: 35px;
+    margin-top:10px;
+
+}
+
+.link {
+    text-decoration: none;
+    color: #3E582A;
+}
+
+.new-post, .post-update {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    right: 20px;
+}
+
+.btn-update {
+
+}

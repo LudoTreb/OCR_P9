@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Créer une critique</h2>
-<div>Vous êtes en train de poster en réponse à</div>
-    <form action="" method="post" enctype="multipart/form-data">
-            {% include 'existing_ticket_snippet.html' %}
-        <hr>
-        <div>Critique</div>
-        {% csrf_token %}
-        {{ form_review.as_p }}
-        <input type="submit" value="Envoyer">
-    </form>
+<div class="new-post">
+    <h2>Créer une critique</h2>
+        <p>Vous êtes en train de poster en réponse à</p>
+            <div class="post">
+                <div class="content-post">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% include 'existing_ticket_snippet.html' %}
+                        <hr>
+                        <p>Critique</p>
+                        {% csrf_token %}
+                        {{ form_review.as_p }}
+                        <input class="btn-center" type="submit" value="Envoyer">
+                    </form>
+                </div>
+            </div>
+    <div class="button">
+    <button type="button" class="btn-left">
+        <a class="btn-text" href="{% url 'home' %}">Retour à flux</a>
+    </button>
+    </div>
+</div>
 {% endblock %}

@@ -1,15 +1,14 @@
 <div class="ticket-in-review">
+    <div class="info-ticket-in-review">
     {% if post.ticket.user.id == user.id %}
-        <div>
-
           <div>Vous avez publié un ticket</div>
-          <div>{{ post.ticket.time_created }}</div>
-
-        {% else %}
-          <div>{{ post.ticket.user.username }} a publié un ticket</div>
-          <div>{{ post.ticket.time_created }}</div>
-        {% endif %}
-
+          <div class="date-post">{{ post.ticket.time_created|date:"H:i, d F o" }}</div>
+    {% else %}
+          <div>{{ post.ticket.user.username|capfirst }} a publié un ticket</div>
+          <div class="date-post">{{ post.ticket.time_created|date:"H:i, d F o" }}</div>
+    {% endif %}
+    </div>
+    <div class="content-ticket">
         <h3 class="card-title">{{ post.ticket.title }}</h3>
         <p class="card-text">{{ post.ticket.description }}</p>
 
@@ -17,6 +16,6 @@
             <img src="{{ '/media/cover_book_default.png' }}">
         {% else %}
             <img src="{{ post.ticket.image.url }}" alt="">
-        </div>
+    </div>
     {% endif %}
 </div>

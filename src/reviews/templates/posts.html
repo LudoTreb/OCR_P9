@@ -1,30 +1,15 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h2>Vos posts</h2>
-    {% for post in posts %}
-    {% if post.content_type == 'TICKET' %}
-        <div>
-            <div>{% include 'ticket_snippet.html' %}</div>
-            {% if post.user.id == user.id %}
-                <button onclick="window.location.href = '{% url 'ticket-update' post.id %}'"> Modifier</button>
-            {% endif %}
-            {% if not post.has_review %}
-                <button onclick="window.location.href = '{% url 'review-answer' post.id %}">Créer une critique</button>
-            {% endif %}
-
-            <hr>
-
-        </div>
-    {% elif post.content_type == 'REVIEW' %}
-        <div>
-            <hr>
-            <div>{% include 'review_snippet.html' %}</div>
-            <button onclick="window.location.href = '{% url 'review-update' post.id %}'"> Modifier</button>
-        </div>
-    {% endif %}
-    {% empty %}
-        <p>No articles yet.</p>
-    {% endfor %}
-
+<div class="container">
+    <h2>Vos posts</h2>
+        {% for post in posts %}
+        {% if post.content_type == 'TICKET' %}
+                <div>{% include 'ticket_snippet.html' %}</div>
+        {% elif post.content_type == 'REVIEW' %}
+                <div>{% include 'review_snippet.html' %}</div>
+        {% endif %}
+        {% empty %}
+            <p>No articles yet.</p>
+        {% endfor %}
+</div>
 {% endblock %}

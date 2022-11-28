@@ -1,14 +1,20 @@
-{% if existing_tiket.user.id == user.id %}
-  <div>Vous avez demandé une critique</div>
-  <div> {{ existing_ticket.time_created|date:"H:i, d F o" }}</div>
-{% else %}
-  <div>{{ existing_ticket.user.username }} a demandé une critique</div>
-  <div>{{ existing_ticket.time_created|date:"H:i, d F o" }}</div>
-{% endif %}
-  <h3>{{ existing_ticket.title }}</h3>
-  <p>{{ existing_ticket.description }}</p>
-{% if not existing_ticket.image %}
-    <img src="{{ '/media/cover_book_default.png' }}">
-{% else %}
-    <img src="{{ existing_ticket.image.url }}" alt="">
-{% endif %}
+
+<div class="info-post-answer">
+    {% if existing_tiket.user.id == user.id %}
+      <div>Vous avez demandé une critique</div>
+      <div class="date-post"> {{ existing_ticket.time_created|date:"H:i, d F o" }}</div>
+    {% else %}
+      <div>{{ existing_ticket.user.username|capfirst }} a demandé une critique</div>
+      <div class="date-post">{{ existing_ticket.time_created|date:"H:i, d F o" }}</div>
+    {% endif %}
+</div>
+<div class="content-post">
+      <h3>{{ existing_ticket.title }}</h3>
+      <p>{{ existing_ticket.description }}</p>
+    {% if not existing_ticket.image %}
+        <img src="{{ '/media/cover_book_default.png' }}">
+    {% else %}
+        <img src="{{ existing_ticket.image.url }}" alt="">
+    {% endif %}
+</div>
+

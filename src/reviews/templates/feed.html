@@ -10,21 +10,16 @@
 </div>
 <div class="container">
     {% for post in posts %}
-        {% if post.content_type == 'TICKET' %}
         <ul>
             <li>
-                <div>
-                    {% include 'ticket_snippet.html' %}
-
-                </div>
-
+            {% if post.content_type == 'TICKET' %}
+                <div>{% include 'ticket_snippet.html' %}</div>
             </li>
-            {% elif post.content_type == 'REVIEW' %}
             <li>
+            {% elif post.content_type == 'REVIEW' %}
                 <div>{% include 'review_snippet.html' %}</div>
             {% endif %}
             </li>
-
         </ul>
     {% endfor %}
 </div>

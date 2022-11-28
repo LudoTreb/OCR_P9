@@ -14,4 +14,9 @@
         <p>{{ post.body }}</p>
     </div>
     {% include 'ticket_in_review_snippet.html' %}
+    {% if post.user.id == user.id %}
+        <button class="btn-center">
+            <a class="link" href= "{% url 'review-update' post.id %}"> Modifier</a>
+        </button>
+        {% endif %}
 </div>

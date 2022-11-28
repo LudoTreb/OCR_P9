@@ -17,5 +17,9 @@ class Ticket(models.Model):
     def no_review(self):
         self.has_review = False
 
+    def is_book_or_article(self):
+        pass
+
     def resize_img(self):
         pass
+

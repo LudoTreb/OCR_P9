@@ -16,8 +16,17 @@
         {% else %}
             <img src="{{ post.image.url }}" alt="">
         {% endif %}
-        {% if not post.has_review %}
-            <button><a href="{% url 'review-answer' post.id %}">Créer une critique</a></button>
-        {% endif %}
+        <div class="btn-place">
+            {% if post.user.id == user.id %}
+            <button class="btn-center">
+                <a class="link" href="{% url 'ticket-update' post.id %}"> Modifier</a>
+            </button>
+            {% endif %}
+            {% if not post.has_review %}
+                <button class="btn-center">
+                        <a class="link" href="{% url 'review-answer' post.id %}">Créer une critique</a>
+                </button>
+            {% endif %}
+        </div>
     </div>
 </div>

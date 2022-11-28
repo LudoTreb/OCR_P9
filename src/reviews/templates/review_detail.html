@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Votre une critique pour le Livre/Article</h2>
-
-<h3>{{ review.ticket.title }}</h3>
-<p>{{ review.ticket.description }}</p>
-{% if not review.ticket.image %}
-    <img src="{{ '/media/cover_book_default.png' }}">
-{% else %}
-    <img src="{{ review.ticket.image.url }}" alt="">
-{% endif %}
-
-
-<h3>Critique</h3>
-<p>{{ review.headline }} - {{ review.rating }}</p>
-<p>{{ review.body }}</p>
-
-<button type="button">
-    <a href="{% url 'home' %}">Retour à flux</a>
-</button>
+<div class="new-post">
+    <h2>Votre une critique pour le Livre/Article</h2>
+    <div class="post">
+        <div class="content-post">
+            <h3>{{ review.ticket.title }}</h3>
+            <p>{{ review.ticket.description }}</p>
+            {% if not review.ticket.image %}
+                <img src="{{ '/media/cover_book_default.png' }}">
+            {% else %}
+                <img src="{{ review.ticket.image.url }}" alt="">
+            {% endif %}
+            <h4>Critique</h4>
+            <p>{{ review.headline }} - {{ review.rating }}</p>
+            <p>{{ review.body }}</p>
+        </div>
+    </div>
+    <button type="button" class="btn-center">
+        <a class="btn-text" href="{% url 'home' %}">Retour à flux</a>
+    </button>
+</div>
 {% endblock %}
