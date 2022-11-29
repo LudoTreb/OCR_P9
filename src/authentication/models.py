@@ -1,7 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 
-# Create your models here.
 from LITReview.settings import AUTH_USER_MODEL
 
 

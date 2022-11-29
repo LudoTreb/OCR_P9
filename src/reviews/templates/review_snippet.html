@@ -10,8 +10,13 @@
     {% endif %}
     </div>
     <div class="content-post">
-        <h3>{{ post.headline }} - Note: {{post.rating}}</h3>
-        <p>{{ post.body }}</p>
+        <div class="resume-post">
+            <h3>{{ post.headline }}</h3>
+            <img src="{{ '/media/star_rating/Star-' }}{{ post.rating }}{{ '.svg' }}">
+        </div>
+        <div class="body-post">
+            <p>{{ post.body }}</p>
+        </div>
     </div>
     {% include 'ticket_in_review_snippet.html' %}
     {% if post.user.id == user.id %}

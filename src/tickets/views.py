@@ -1,11 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-# Create your views here.
 from tickets import models, forms
 from tickets.forms import TicketForm
 from tickets.models import Ticket
 
 
+@login_required
 def ticket_add(request):
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, request.FILES)
@@ -19,31 +20,19 @@ def ticket_add(request):
     return render(request, 'ticket_add.html', context={'form': ticket_form})
 
 
+@login_required
 def ticket_detail(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     return render(request, 'ticket_detail.html', context={'ticket': ticket})
 
 
+@login_required
 def tickets(request):
     tickets = Ticket.objects.all()
     return render(request, 'tickets.html', context={'tickets': tickets})
 
 
-# def ticket_update(request, ticket_id):
-#     ticket = Ticket.objects.get(id=ticket_id)
-#     if request.method == 'POST':
-#         ticket_update_form = TicketForm(request.POST, instance=ticket)
-#         if ticket_update_form.is_valid():
-#             ticket_update_form.save()
-#             return redirect('ticket-detail', ticket.id)
-#
-#     else:
-#         ticket_update_form = TicketForm(instance=ticket)
-#
-#     return render(request, 'ticket_update.html', context={
-#                                                 'ticket_update_form': ticket_update_form,
-#                                             })
-
+@login_required
 def ticket_update(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     update_form = forms.TicketForm(instance=ticket)

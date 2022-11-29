@@ -9,6 +9,10 @@
                     {{ update_form.as_p }}
                     {{ delete_form }}
                     <button class="btn-center" type="submit">Modifier</button>
+                </form>
+                <form class="btn-delete" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ delete_form }}
                     <button class="btn-center" type="submit">Supprimer</button>
                 </form>
             </div>

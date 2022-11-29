@@ -2,21 +2,14 @@ from itertools import chain
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Value
-from django.forms import CharField
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
 
-from authentication.models import User, UserFollows
+from authentication.models import UserFollows
 from reviews import models, forms
 from reviews.forms import ReviewForm
-from tickets.forms import TicketForm
 from reviews.models import Review
+from tickets.forms import TicketForm
 from tickets.models import Ticket
-
-
-class ArticleListView(ListView):
-    model = Review
-    template_name = "feed_2.html"
 
 
 @login_required
@@ -51,12 +44,12 @@ def feed(request):
     }
     return render(request, 'feed.html', context=context)
 
-
+@login_required
 def review_detail(request, review_id):
     review = Review.objects.get(id=review_id)
     return render(request, 'review_detail.html', context={'review': review})
 
-
+@login_required
 def review_add(request):
     ticket_form = TicketForm()
     review_form = ReviewForm()
@@ -83,7 +76,7 @@ def review_add(request):
     }
     return render(request, 'review_add.html', context=context)
 
-
+@login_required
 def review_answer(request, ticket_id):
     existing_ticket = get_object_or_404(models.Ticket, id=ticket_id)
     form_review = forms.ReviewForm()
@@ -103,7 +96,7 @@ def review_answer(request, ticket_id):
     }
     return render(request, 'review_answer.html', context=context)
 
-
+@login_required
 def review_update(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
     update_form = forms.ReviewForm(instance=review)
@@ -127,17 +120,16 @@ def review_update(request, review_id):
     }
     return render(request, 'review_update.html', context=context)
 
-
+@login_required
 def posts_page(request):
     reviews = Review.objects.filter(user=request.user)
-    # returns queryset of reviews
+
     reviews = reviews.annotate(content_type=Value('REVIEW', ))
 
     tickets = Ticket.objects.filter(user=request.user)
-    # returns queryset of tickets
+
     tickets = tickets.annotate(content_type=Value('TICKET', ))
 
-    # combine and sort the two types of posts
     posts = sorted(
         chain(reviews, tickets),
         key=lambda post: post.time_created,
@@ -146,9 +138,8 @@ def posts_page(request):
 
     return render(request, 'posts.html', context={'posts': posts})
 
-
+@login_required
 def unfollow(request, user_follow_id):
-
     UserFollows.objects.get(id=user_follow_id).delete()
 
     return redirect('subscription')

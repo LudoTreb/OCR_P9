@@ -1,7 +1,5 @@
 from django.db import models
-
-# Create your models here.
-from django.db.models import DateTimeField, ImageField
+from django.db.models import DateTimeField
 
 from LITReview.settings import AUTH_USER_MODEL
 
@@ -22,4 +20,3 @@ class Ticket(models.Model):
 
     def resize_img(self):
         pass
-
