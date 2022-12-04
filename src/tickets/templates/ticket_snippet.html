@@ -12,9 +12,9 @@
         <h3>{{ post.title }}</h3>
         <p> {{ post.description }}</p>
         {% if not post.image %}
-            <img src="{{ '/media/cover_book_default.png' }}">
+            <img class="cover-book" src="{{ '/media/cover_book_default.png' }}">
         {% else %}
-            <img src="{{ post.image.url }}" alt="">
+            <img class="cover-book" src="{{ post.image.url }}" alt="">
         {% endif %}
         <div class="btn-place">
             {% if post.user.id == user.id %}

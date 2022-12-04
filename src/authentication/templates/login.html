@@ -1,22 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="login">
-
     <div class="registration">
         <div class="registration-title">
-                <h2>Inscrivez-vous maintenant</h2>
+            <h2>Inscrivez-vous maintenant</h2>
         </div>
         <button class="btn-center">
             <a class="btn-text" href="{% url 'signup' %}">Inscrivez-vous</a>
         </button>
     </div>
-
     <div class="login-input">
-
         <div class="login-title">
             <h2>Connectez-vous</h2>
         </div>
-
             <form class="login-form" method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <table>
@@ -35,18 +31,10 @@
                     {% endif %}
                     </tr>
                 </table>
-
-
             <input class="btn-center" type="submit" value="Se connecter">
             <input type="hidden" name="next" value="{{ next }}">
-
             </form>
-
     </div>
-
-<!--    <div class="login-img">-->
-<!--        <img src="/media/book-illust.jpg" alt="">-->
-<!--    </div>-->
 </div>
 
 {% endblock %}

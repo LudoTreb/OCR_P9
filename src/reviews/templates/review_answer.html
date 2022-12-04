@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="new-post">
     <h2>Créer une critique</h2>
@@ -8,9 +9,9 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         {% include 'existing_ticket_snippet.html' %}
                         <hr>
-                        <p>Critique</p>
+                        <h3>Critique</h3>
                         {% csrf_token %}
-                        {{ form_review.as_p }}
+                        {{ form_review|crispy }}
                         <input class="btn-center" type="submit" value="Envoyer">
                     </form>
                 </div>

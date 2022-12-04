@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
+<div class="main-container">
+    <h2>Inscription</h2>
+</div>
 <div class="main-container-signup">
     <div class="signup">
-        <h2>Inscription</h2>
         {% if form.errors %}
             {{ form.errors }}
         {% endif %}
         <form class="signup-form" method="POST">
             <div class="input-field">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             </div>
-
             <div class="btn-place">
-                <button class="btn-signup">
-                    <a class="btn-text" href="{% url 'home' %}">Retour</a>
-                </button>
                 <button class="btn-signup" type="submit">S'inscrire</button>
             </div>
         </form>
 </div>
+    <button class="btn-signup">
+        <a class="btn-text" href="{% url 'home' %}">Retour</a>
+    </button>
 </div>
 {% endblock %}

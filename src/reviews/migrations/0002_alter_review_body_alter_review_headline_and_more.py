@@ -7,23 +7,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('reviews', '0001_initial'),
+        ("reviews", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='review',
-            name='body',
-            field=models.TextField(default='', max_length=8192, verbose_name='Commentaire'),
+            model_name="review",
+            name="body",
+            field=models.TextField(
+                default="", max_length=8192, verbose_name="Commentaire"
+            ),
         ),
         migrations.AlterField(
-            model_name='review',
-            name='headline',
-            field=models.CharField(max_length=128, verbose_name='Avis'),
+            model_name="review",
+            name="headline",
+            field=models.CharField(max_length=128, verbose_name="Avis"),
         ),
         migrations.AlterField(
-            model_name='review',
-            name='rating',
-            field=models.PositiveSmallIntegerField(default=0, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)], verbose_name='Note'),
+            model_name="review",
+            name="rating",
+            field=models.PositiveSmallIntegerField(
+                default=0,
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
+                verbose_name="Note",
+            ),
         ),
     ]

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="post-update">
     <h2>Modifier votre critique</h2>
@@ -6,7 +7,7 @@
                 <div class="content-post">
                     <form action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ update_form.as_p }}
+                        {{ update_form|crispy}}
                         <button class="btn-center" type="submit">Modifier</button>
                     </form>
                     <form action="" method="post" enctype="multipart/form-data">

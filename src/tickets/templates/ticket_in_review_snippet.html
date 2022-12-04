@@ -13,9 +13,9 @@
         <p class="card-text">{{ post.ticket.description }}</p>
 
         {% if not post.image %}
-            <img src="{{ '/media/cover_book_default.png' }}">
+            <img class="cover-book" src="{{ '/media/cover_book_default.png' }}">
         {% else %}
-            <img src="{{ post.ticket.image.url }}" alt="">
+            <img class="cover-book" src="{{ post.ticket.image.url }}" alt="">
     </div>
     {% endif %}
 </div>

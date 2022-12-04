@@ -7,13 +7,19 @@
             <h3>{{ review.ticket.title }}</h3>
             <p>{{ review.ticket.description }}</p>
             {% if not review.ticket.image %}
-                <img src="{{ '/media/cover_book_default.png' }}">
+                <img class="cover-book" src="{{ '/media/cover_book_default.png' }}">
             {% else %}
-                <img src="{{ review.ticket.image.url }}" alt="">
+                <img class="cover-book" src="{{ review.ticket.image.url }}" alt="">
             {% endif %}
-            <h4>Critique</h4>
-            <p>{{ review.headline }} - {{ review.rating }}</p>
-            <p>{{ review.body }}</p>
+
+            <h3>Critique</h3>
+            <div class="resume-post">
+                <h3>{{ review.headline }}</h3>
+                <img src="{{ '/media/star_rating/Star-' }}{{ review.rating }}{{ '.svg' }}">
+            </div>
+            <div class="body-post">
+                <p>{{ review.body }}</p>
+            </div>
         </div>
     </div>
     <button type="button" class="btn-center">

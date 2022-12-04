@@ -8,9 +8,9 @@
                 <h3>{{ ticket.title }}</h3>
                 <p>{{ ticket.description }}</p>
                 {% if not ticket.image %}
-                    <img src="{{ '/media/cover_book_default.png' }}">
+                    <img  class="cover-book" src="{{ '/media/cover_book_default.png' }}">
                 {% else %}
-                    <img src="{{ ticket.image.url }}" alt="">
+                    <img class="cover-book" src="{{ ticket.image.url }}" alt="">
                 {% endif %}
             </div>
         </div>

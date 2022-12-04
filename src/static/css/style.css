@@ -14,9 +14,36 @@ p, h4, h3, h2 {
 }
 
 hr {
-  border-top: 1px solid #3E582A;
+  border-top: 0px solid #3E582A;
+  width: 100%;
 }
 
+.cover-book {
+    border: 1px solid #3E582A;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 16px;
+    gap: 16px;
+    width: 100%;
+
+}
+
+.requiredField {
+    font-size:0.9em;
+}
+
+.asteriskField {
+    color: transparent;
+}
+
+.login-form label {
+    color: #3E582A;
+}
 
 /* navigation bar elements */
 
@@ -24,21 +51,24 @@ hr {
 .flex-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding: 0 16px 0 16px;
     flex-wrap: wrap;
     gap: 16px;
     background-color: #B6DA9A;
     height: 50px;
-    width: 100%;
+    width: %;
 }
 
 .authenticate {
+    display: flex;
     margin-right: auto;
-    margin: 0 0 0 10px;
-
+    margin: 0 0 0 0px;
+    width: px;
 }
 
 .logo {
+    display: flex;
     margin: auto;
 }
 
@@ -51,7 +81,8 @@ hr {
     flex-wrap: wrap;
     gap: 16px;
     margin-left: auto;
-    margin: 0 10px 0 0;
+    margin: 0 0px 0 0;
+
 }
 
 .nav-menu {
@@ -79,7 +110,7 @@ hr {
 
 .btn-center {
     margin-top:auto;
-    margin: 0 0 7px 0;
+    margin: 0 0 10px 0;
     background-color: #B6DA9A;
     border: none;
     padding: 7px 40px;
@@ -90,7 +121,6 @@ hr {
     color: #3E582A;
 
 }
-
 
 .btn-left {
 
@@ -117,8 +147,8 @@ hr {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    right: 20px;
+    gap: 5px;
+
 
 }
 
@@ -148,11 +178,33 @@ hr {
     display: flex;
     flex-direction:column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 25px;
-    margin: 0 0 0 0;
-    width: 500px;
+    margin: 16px 0 16px 0;
+    padding: 16px;
+    background-color: #FFFCE9;
+    border: 1px solid #3E582A;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 16px;
+    color: #3E582A;
+}
+
+.signup .input-field {
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn-signup {
@@ -170,21 +222,6 @@ hr {
     width: 100px
 }
 
-.btn-place {
-    display: flex;
-    flex-direction:row;
-    gap: 16px;
-}
-
-.signup-form {
-    display: flex;
-    flex-direction:column;
-
-    gap: 15px;
-    flex-wrap: wrap;
-    margin: 0 0 10px 10px;
-    color: #3E582A;
-}
 
 /* Login */
 
@@ -210,8 +247,6 @@ textarea[name="description"], [name="body"] {
     border: 2px solid #B6DA9A;
 }
 
-
-
 input[name="password"], [name="password1"], [name="password2"] {
 
     height: 20px;
@@ -227,6 +262,8 @@ input[name="password"], [name="password1"], [name="password2"] {
     justify-content: center;
     flex-wrap: wrap;
     gap: 75px;
+    position: relative;
+    right: 27px;
 }
 
 .login-input {
@@ -236,7 +273,7 @@ input[name="password"], [name="password1"], [name="password2"] {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 25px;
-    margin: 0 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .registration{
@@ -392,6 +429,7 @@ li {
     justify-content: space-between;
     padding: 16px;
     color: #3E582A;
+    width:100%;
 }
 
 .content-post {
@@ -413,8 +451,11 @@ li {
 }
 
 .date-post {
+    display: flex;
+    align-items:;
+
     font-size: 0.75em;
-    padding: 5px 0 0 0;
+    padding: 5px 16px 0 0;
 }
 
 .ticket-in-review {
@@ -431,8 +472,6 @@ li {
     flex-direction: column;
     align-items: baseline;
     justify-content: space-between;
-    padding: px;
-
 }
 
 .content-ticket {
@@ -441,14 +480,12 @@ li {
     align-items: flex-start;
     justify-content: space-between;
     padding: 0 0 10px 0;
-
 }
 
 .btn-create-review {
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 0.8em;
     background-color: #B6DA9A;
     border: 1px solid #3E582A;
@@ -456,7 +493,6 @@ li {
     padding: 5px 16px 5px 16px;
     height: 35px;
     margin-top:10px;
-
 }
 
 .link {
@@ -473,6 +509,3 @@ li {
     right: 20px;
 }
 
-.btn-update {
-
-}

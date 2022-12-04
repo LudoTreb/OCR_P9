@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="main-container">
+    <h2 class="subscription-title">Suivre d'autres utilisateurs</h2>
+</div>
 <div class="main-container-subscription">
     <div class="subscription-container">
-        <h3 class="subscription-title">Suivre d'autres utilisateurs</h3>
         {% for message in messages %}
             <li {% if message.tags %} {% endif %}>{{ message }}</li>
             {% endfor %}
