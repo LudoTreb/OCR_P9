@@ -1,2 +1,4 @@
 [MASTER]
-ignore=migrations
+ignore=migrations, apps.py, manage.py
+
+disable=no-member, too-few-public-methods
