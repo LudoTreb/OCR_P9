@@ -5,7 +5,7 @@
 LITReview is a website that allows a community of users to consult or request a book review on demand.
 ***
 ## Download file
-You can download the file here : 
+You can download the file here : [https://github.com/LudoTreb/OCR_P9.git](https://github.com/LudoTreb/OCR_P9.git)
 
 ## Setup
 
